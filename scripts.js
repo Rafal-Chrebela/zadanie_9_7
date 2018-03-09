@@ -111,18 +111,19 @@ function checkRoundWinner(playerPick, computerPick) {
     computer.score++;
   }
   setGamePoints();
-  gameOver();
+
+  if (computer.score == 10) {
+    gameState = "ended";
+    alert("Computer Win!");
+    setGameElements();
+  } else if (player.score == 10) {
+    gameState = "ended";
+    setGameElements();
+    alert(player.name + " Win!");
+  }
 }
 
 function setGamePoints() {
   playerPointsElem.innerHTML = player.score;
   computerPointsElem.innerHTML = computer.score;
-}
-
-function gameOver() {
-  if (computer.score == 10) {
-    gameState = "ended";
-  } else if (player.score == 10) {
-    gameState = "ended";
-  }
 }
